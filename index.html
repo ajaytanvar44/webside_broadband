@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Grid Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles not easily covered by Tailwind or for specific overrides */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 leading-relaxed min-h-screen flex flex-col">
+    <header class="bg-gray-800 text-white p-4 text-center shadow-md">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">My Awesome Website</h1>
+        <nav>
+            <ul class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6">
+                <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-300">Home</a></li>
+                <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-300">About</a></li>
+                <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-300">Services</a></li>
+                <li><a href="#" class="block px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-300">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 max-w-7xl mx-auto flex-grow">
+        <section class="grid-item featured bg-white p-6 rounded-xl shadow-lg border-2 border-blue-500 md:col-span-2">
+            <h2 class="text-2xl font-semibold mb-3 text-gray-900">Featured Article</h2>
+            <p class="mb-4 text-gray-700">This is a prominent section highlighting an important piece of content. It takes up more space on larger screens.</p>
+            <img src="https://placehold.co/600x300/e0e0e0/333333?text=Featured+Image" alt="Featured Image" class="w-full h-auto rounded-lg mb-4 object-cover">
+            <a href="#" class="read-more inline-block bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-300 font-medium">Read More</a>
+        </section>
+
+        <section class="grid-item bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold mb-3 text-gray-900">Grid Item 1</h2>
+            <p class="mb-4 text-gray-700">This is a regular grid item. It contains some text content and an image.</p>
+            <img src="https://placehold.co/300x200/e0e0e0/333333?text=Item+1+Image" alt="Item 1 Image" class="w-full h-auto rounded-lg mb-4 object-cover">
+        </section>
+
+        <section class="grid-item bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold mb-3 text-gray-900">Grid Item 2</h2>
+            <p class="mb-4 text-gray-700">Another grid item, demonstrating the flexibility of the layout. You can add various types of content here.</p>
+            <img src="https://placehold.co/300x200/e0e0e0/333333?text=Item+2+Image" alt="Item 2 Image" class="w-full h-auto rounded-lg mb-4 object-cover">
+        </section>
+
+        <section class="grid-item bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold mb-3 text-gray-900">Grid Item 3</h2>
+            <p class="mb-4 text-gray-700">Content for the third grid item. The grid will automatically adjust its columns based on screen size.</p>
+            <img src="https://placehold.co/300x200/e0e0e0/333333?text=Item+3+Image" alt="Item 3 Image" class="w-full h-auto rounded-lg mb-4 object-cover">
+        </section>
+
+        <section class="grid-item bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold mb-3 text-gray-900">Grid Item 4</h2>
+            <p class="mb-4 text-gray-700">And finally, the fourth grid item. This could be a product, a news snippet, or anything else.</p>
+            <img src="https://placehold.co/300x200/e0e0e0/333333?text=Item+4+Image" alt="Item 4 Image" class="w-full h-auto rounded-lg mb-4 object-cover">
+        </section>
+
+        <aside class="grid-item sidebar bg-white p-6 rounded-xl shadow-lg lg:col-start-3 lg:row-start-1 lg:row-span-2">
+            <h2 class="text-xl font-semibold mb-3 text-gray-900">Sidebar Content</h2>
+            <ul class="list-none space-y-2 mb-4">
+                <li><a href="#" class="text-blue-600 hover:underline transition-colors duration-300">Category 1</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline transition-colors duration-300">Category 2</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline transition-colors duration-300">Category 3</a></li>
+            </ul>
+            <p class="text-gray-700">This sidebar might contain navigation, ads, or supplementary information.</p>
+        </aside>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4 text-center mt-auto shadow-inner">
+        <p class="text-sm">&copy; 2025 Flexible Grid Layout. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // script.js content embedded here
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Website loaded and ready!');
+
+            // Select all grid items
+            const gridItems = document.querySelectorAll('.grid-item');
+
+            // Add hover effects for desktop (will not interfere with mobile layout)
+            gridItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateY(-5px)';
+                    item.style.transition = 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out';
+                    item.style.boxShadow = '0 8px 15px rgba(0, 0, 0, 0.2)'; // Enhanced shadow on hover
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0)';
+                    item.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)'; // Reset shadow
+                });
+            });
+
+            // Note: For touch devices, hover effects are often not ideal.
+            // A tap typically triggers the 'click' event.
+            // If more complex touch interactions are needed, consider using
+            // 'touchstart', 'touchend', 'touchmove' events.
+        });
+    </script>
+</body>
+</html>

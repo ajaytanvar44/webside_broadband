@@ -1,0 +1,201 @@
+/* Basic Reset & Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.site-header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.site-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.site-header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* For horizontal navigation on larger screens */
+    flex-direction: column; /* Stack vertically on small screens */
+    align-items: center; /* Center items for single column */
+}
+
+.site-header nav ul li {
+    margin: 0.5rem 0; /* Vertical spacing for stacked items */
+}
+
+.site-header nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.site-header nav a:hover {
+    background-color: #555;
+}
+
+/* Main Grid Container */
+.grid-container {
+    display: grid;
+    /* On mobile, stack items in a single column by default */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 1200px; /* Limit overall width */
+    margin: 0 auto; /* Center the grid */
+}
+
+.grid-item {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item h2 {
+    color: #333;
+    margin-bottom: 0.8rem;
+}
+
+.grid-item p {
+    margin-bottom: 1rem;
+}
+
+.grid-item img {
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto;
+    display: block; /* Removes extra space below image */
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.grid-item .read-more {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.grid-item .read-more:hover {
+    background-color: #0056b3;
+}
+
+/* Featured Article Styling */
+.featured {
+    /* On mobile, it still takes full width, no special grid span needed here */
+    border: 2px solid #007bff;
+}
+
+/* Sidebar Specific Styling */
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* Media Queries for Larger Screens */
+@media (min-width: 600px) {
+    .site-header nav ul {
+        flex-direction: row; /* Horizontal nav on larger screens */
+        justify-content: center; /* Center items */
+    }
+
+    .site-header nav ul li {
+        margin: 0 1rem; /* Horizontal spacing */
+    }
+
+    .grid-container {
+        /* On screens 600px and up, use 2 columns */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .featured {
+        /* On screens 600px and up, make featured span 2 columns */
+        grid-column: span 2;
+    }
+
+    /* Move sidebar to a specific column on larger screens if desired */
+    /* This example assumes a dynamic layout, but for fixed sidebar, you'd adjust grid-template-areas */
+}
+
+@media (min-width: 900px) {
+    .grid-container {
+        /* On screens 900px and up, use a more complex layout */
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        grid-template-areas:
+            "featured featured sidebar"
+            "item1 item2 sidebar"
+            "item3 item4 ."; /* Blank space to align items */
+    }
+
+    .featured {
+        grid-area: featured;
+        grid-column: span 2; /* Ensure it spans 2 columns */
+    }
+
+    /* Assign grid areas to specific items for more control */
+    /* You would need to add classes to your HTML grid items like grid-item-1, grid-item-2 etc. */
+    /* For simplicity, I'm sticking to a more fluid grid where items fill automatically */
+    /* but if you want specific item placement on large screens, uncomment/add these: */
+
+    /* .grid-item:nth-of-type(2) { grid-area: item1; } */
+    /* .grid-item:nth-of-type(3) { grid-area: item2; } */
+    /* .grid-item:nth-of-type(4) { grid-area: item3; } */
+    /* .grid-item:nth-of-type(5) { grid-area: item4; } */
+
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+}
+
+/* Optional: Adjust font sizes for better readability on smaller screens */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.95rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.4rem;
+    }
+}
